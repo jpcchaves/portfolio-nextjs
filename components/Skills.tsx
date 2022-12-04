@@ -1,6 +1,7 @@
 import React from "react";
 import SkillCard from "./SkillCard";
-import skillsList from "../data/skillsListData.json";
+
+import { SkillsData } from "../data/skillsListData";
 
 const Skills = () => {
   return (
@@ -11,9 +12,9 @@ const Skills = () => {
         </p>
         <h2 className="py-4">Tecnologias que utilizo</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillsList &&
-            skillsList.map(({ id, path, name }) => (
-              <SkillCard key={id} path={path} skill={name} />
+          {SkillsData &&
+            SkillsData.map(({ id, name, path }) => (
+              <SkillCard key={id} skill={name} path={path} />
             ))}
         </div>
       </div>
