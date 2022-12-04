@@ -1,6 +1,6 @@
 import React from "react";
 import SkillCard from "./SkillCard";
-import { skillsList } from "../utils/skillsList";
+import skillsList from "../data/skillsListData.json";
 
 const Skills = () => {
   return (
