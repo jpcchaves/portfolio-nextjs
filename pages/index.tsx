@@ -14,7 +14,6 @@ export default function Home() {
         <meta name="description" content="Criado utilizando NextJS" />
         <link rel="icon" href="/favicon.io" />
       </Head>
-      <Navbar />
       <Main />
       <About />
       <Skills />
