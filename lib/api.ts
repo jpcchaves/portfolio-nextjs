@@ -1,4 +1,4 @@
-export const sendContactForm = async (data: any) => await fetch('https://porfolio-jpcchaves.vercel.app/api/contact', {
+export const sendContactForm = async (data: any) => await fetch('/api/contact', {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
