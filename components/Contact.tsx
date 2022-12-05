@@ -4,10 +4,27 @@ import Link from "next/link";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 
+import { contactValidation } from "../validations/contactValidation";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, FieldValues } from "react-hook-form";
+
 const Contact = () => {
+  const formOptions = { resolver: yupResolver(contactValidation) };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm(formOptions);
+
+  const onSubmit = async (data: FieldValues) => {
+    const { name, phone, email, subject, message } = data;
+  };
+
   return (
     <div className="w-full lg:h-screen" id="contact">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
@@ -57,52 +74,119 @@ const Contact = () => {
           {/* right */}
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
-              <form>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-4 w-full py-2">
                   <div className="flex flex-col">
                     <label className="uppercase text-sm py-2">Nome</label>
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
-                      type="text"
-                      name="name"
-                    />
+                    {errors.name ? (
+                      <input
+                        className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
+                        type="text"
+                        {...register("name")}
+                      />
+                    ) : (
+                      <input
+                        className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
+                        type="text"
+                        {...register("name")}
+                      />
+                    )}
+                    {errors.name && (
+                      <p className="text-red-500 ml-1">
+                        <>{errors.name?.message}</>
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col">
                     <label className="uppercase text-sm py-2">Telefone</label>
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300"
-                      type="text"
-                      name="name"
-                    />
+                    {errors.phone ? (
+                      <input
+                        className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
+                        type="number"
+                        {...register("phone")}
+                      />
+                    ) : (
+                      <input
+                        className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
+                        type="number"
+                        {...register("phone")}
+                      />
+                    )}
+                    {errors.phone && (
+                      <p className="text-red-500 ml-1">
+                        <>{errors.phone?.message}</>
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Email</label>
-                  <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300"
-                    type="email"
-                    name="name"
-                  />
+                  {errors.email ? (
+                    <input
+                      className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
+                      type="email"
+                      {...register("email")}
+                    />
+                  ) : (
+                    <input
+                      className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
+                      type="email"
+                      {...register("email")}
+                    />
+                  )}
+                  {errors.email && (
+                    <p className="text-red-500 ml-1">
+                      <>{errors.email?.message}</>
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Assunto</label>
-                  <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300"
-                    type="text"
-                    name="name"
-                  />
+                  {errors.subject ? (
+                    <input
+                      className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
+                      type="text"
+                      {...register("subject")}
+                    />
+                  ) : (
+                    <input
+                      className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
+                      type="text"
+                      {...register("subject")}
+                    />
+                  )}
+                  {errors.subject && (
+                    <p className="text-red-500 ml-1">
+                      <>{errors.subject?.message}</>
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Mensagem</label>
-                  <textarea
-                    className="border-2 rounded-lg p-3 border-gray-300"
-                    rows={10}
-                    name="message"
-                  />
+                  {errors.message ? (
+                    <textarea
+                      className="border-2 rounded-lg p-3 border-red-500 focus:outline-[#5651e5]"
+                      rows={10}
+                      {...register("message")}
+                    />
+                  ) : (
+                    <textarea
+                      className="border-2 rounded-lg p-3 border-gray-300 focus:outline-[#5651e5]"
+                      rows={10}
+                      {...register("message")}
+                    />
+                  )}
+                  {errors.message && (
+                    <p className="text-red-500 ml-1">
+                      <>{errors.message?.message}</>
+                    </p>
+                  )}
                 </div>
-                <button className="w-full p-4 text-gray-100 mt-4">
-                  Enviar Mensagem
-                </button>
+                <input
+                  type="submit"
+                  value="Enviar Mensagem"
+                  className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
+                />
               </form>
             </div>
           </div>
