@@ -11,7 +11,12 @@ import { contactValidation } from "../validations/contactValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, FieldValues } from "react-hook-form";
 
+import { sendContactForm } from "../lib/api";
+import { useState } from "react";
+
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const formOptions = { resolver: yupResolver(contactValidation) };
 
   const {
@@ -22,7 +27,17 @@ const Contact = () => {
   } = useForm(formOptions);
 
   const onSubmit = async (data: FieldValues) => {
-    const { name, phone, email, subject, message } = data;
+    try {
+      setIsLoading(true);
+      await sendContactForm(data);
+
+
+      reset();
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -182,11 +197,20 @@ const Contact = () => {
                     </p>
                   )}
                 </div>
-                <input
-                  type="submit"
-                  value="Enviar Mensagem"
-                  className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
-                />
+                {isLoading ? (
+                  <input
+                    type="submit"
+                    value="Enviando..."
+                    disabled
+                    className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
+                  />
+                ) : (
+                  <input
+                    type="submit"
+                    value="Enviar Mensagem"
+                    className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
+                  />
+                )}
               </form>
             </div>
           </div>
