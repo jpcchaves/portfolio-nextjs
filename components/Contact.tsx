@@ -29,8 +29,8 @@ const Contact = () => {
   const onSubmit = async (data: FieldValues) => {
     try {
       setIsLoading(true);
-      await sendContactForm(data);
 
+      await sendContactForm(data);
 
       reset();
       setIsLoading(false);
@@ -197,14 +197,15 @@ const Contact = () => {
                     </p>
                   )}
                 </div>
-                {isLoading ? (
+                {isLoading && (
                   <input
                     type="submit"
                     value="Enviando..."
                     disabled
                     className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
                   />
-                ) : (
+                )}
+                {!isLoading && (
                   <input
                     type="submit"
                     value="Enviar Mensagem"
