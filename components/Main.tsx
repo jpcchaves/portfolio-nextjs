@@ -24,18 +24,34 @@ const Main = () => {
             Boot no <strong>Back-end</strong>
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+            <a
+              className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
+              href="https://www.linkedin.com/in/joaopaulo-chaves/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLinkedinIn />
-            </div>
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+            </a>
+            <a
+              className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
+              href="https://github.com/jpcchaves"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaGithub />
-            </div>
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+            </a>
+            <a
+              className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
+              href="mailto:jpcchaves@outlook.com"
+            >
               <AiOutlineMail />
-            </div>
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+            </a>
+            <a
+              className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300"
+              href="#contact"
+            >
               <BsFillPersonLinesFill />
-            </div>
+            </a>
           </div>
         </div>
       </div>
