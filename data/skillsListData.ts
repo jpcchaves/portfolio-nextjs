@@ -27,32 +27,32 @@ export const SkillsData = [
     path: SpringBoot,
   },
   {
-    id: 2,
+    id: 3,
     name: "TypeScript",
     path: TS,
   },
   {
-    id: 3,
+    id: 4,
     name: "ReactJS",
     path: ReactIcon,
   },
   {
-    id: 4,
+    id: 5,
     name: "NextJS",
     path: NextIcon,
   },
   {
-    id: 5,
+    id: 6,
     name: "TailwindCSS",
     path: TW,
   },
   {
-    id: 6,
+    id: 7,
     name: "Styled Components",
     path: SC,
   },
   {
-    id: 7,
+    id: 8,
     name: "Chakra UI",
     path: Chakra,
   },
