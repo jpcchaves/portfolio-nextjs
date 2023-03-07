@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import { BsPersonLinesFill } from "react-icons/bs";
+import { BsFillPersonLinesFill, BsPersonLinesFill } from "react-icons/bs";
 
 import { useRouter } from "next/router";
 
@@ -156,18 +156,34 @@ const Navbar = () => {
                 Vamos nos conectar!
               </p>
               <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                <a
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  href="https://www.linkedin.com/in/joaopaulo-chaves/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FaLinkedinIn />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                </a>
+                <a
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  href="https://github.com/jpcchaves"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <FaGithub />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+                </a>
+                <a
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  href="mailto:jpcchaves@outlook.com"
+                >
                   <AiOutlineMail />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <BsPersonLinesFill />
-                </div>
+                </a>
+                <a
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-110 ease-in duration-300"
+                  href="#contact"
+                >
+                  <BsFillPersonLinesFill />
+                </a>
               </div>
             </div>
           </div>
