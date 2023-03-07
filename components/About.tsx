@@ -28,9 +28,12 @@ const About = () => {
             ajudam no processo desenvolvimento, otimizando o tempo e construindo
             aplicações web mais otimizadas e performáticas.
           </p>
-          <p className="py-2 text-gray-600 underline cursor-pointer">
+          <a
+            href="#projects"
+            className="py-2 text-gray-600 underline cursor-pointer"
+          >
             Veja alguns dos meus projetos mais recentes.
-          </p>
+          </a>
         </div>
         <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
           <img
