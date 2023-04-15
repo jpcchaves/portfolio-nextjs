@@ -22,7 +22,7 @@ const Navbar = () => {
     if (
       router.asPath === "/softreaming" ||
       router.asPath === "/softpets" ||
-      router.asPath === "/movieslib" ||
+      router.asPath === "/taskmanager" ||
       router.asPath === "/miniblog"
     ) {
       setNavBg("transparent");
