@@ -1,14 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-import TaskmanagerImg from "../public/assets/projects/taskmanager.png";
+import SearchHubImg from "../public/assets/projects/searchhub.png";
 
 import { RiRadioButtonFill } from "react-icons/ri";
-
 import Link from "next/link";
-import { taskManagerTechsList } from "../data/taskManagerTechsList";
+import { searchHubTechList } from "../data/searchHubTechList";
 
-const taskmanager = () => {
+const searchhub = () => {
   return (
     <div className="w-full">
       <div className="w-full h-[30vh] lg:h-[40vh] relative">
@@ -18,48 +17,42 @@ const taskmanager = () => {
           layout="fill"
           objectFit="cover"
           alt="/"
-          src={TaskmanagerImg}
+          src={SearchHubImg}
         />
         <div className="absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2">
-          <h2 className="py-2">TaskManager</h2>
-          <h3>Java, Spring Boot, ReactJS, TypeScript</h3>
+          <h2 className="py-2">SearchHub</h2>
+          <h3>TypeScript, React, Java, Spring Boot</h3>
         </div>
       </div>
       <div className="max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 pt-8">
         <div className="col-span-4">
-          <p>TaskManager</p>
+          <p>SearchHub</p>
           <h2 className="py-2">Overview</h2>
           <p>
-            O projeto trata-se de um gerenciador de tarefas onde o usuário pode
-            cadastrar, excluir e editar tarefas.
+            O projeto trata-se de um buscador de perfil no GitHub. A busca é
+            feita por meio do nome de usuário digitado no input. Foi utilizada a
+            API pública do GitHub para desenvolver este projeto.
           </p>
           <a
-            href="https://taskmanagerv2.netlify.app/"
+            href="https://searchub.netlify.app/"
             target="_blank"
             rel="noreferrer"
           >
-            <button className="px-8 py-2 mt-4 mr-4">Demo</button>
+            <button className="px-8 py-2 mt-4 mr-8">Demo</button>
           </a>
           <a
-            href="https://github.com/jpcchaves/taskmanagerv2"
+            href="https://github.com/jpcchaves/searchub"
             target="_blank"
             rel="noreferrer"
           >
-            <button className="px-8 py-2 mt-4 mr-4">Front-end Code</button>
-          </a>
-          <a
-            href="https://github.com/jpcchaves/task-manager"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button className="px-8 py-2 mt-4">Backend-end Code</button>
+            <button className="px-8 py-2 mt-4">Code</button>
           </a>
         </div>
         <div className="col-span-4 md:col-span-1 shadow-xl shadow-gray-400 rounded-xl p-4">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Tecnologias</p>
             <div className="grid grid-cols-3 md:grid-cols-1">
-              {(taskManagerTechsList || []).map(({ name, id }) => (
+              {(searchHubTechList || []).map(({ id, name }) => (
                 <p key={id} className="text-gray-600 py-2 flex items-center">
                   <RiRadioButtonFill className="pr-1" />
                   {name}
@@ -76,4 +69,4 @@ const taskmanager = () => {
   );
 };
 
-export default taskmanager;
+export default searchhub;

@@ -21,7 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     if (
       router.asPath === "/softreaming" ||
-      router.asPath === "/softpets" ||
+      router.asPath === "/searchhub" ||
       router.asPath === "/taskmanager" ||
       router.asPath === "/miniblog"
     ) {
