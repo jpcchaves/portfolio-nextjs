@@ -12,6 +12,7 @@ import { sendContactForm } from "../lib/api";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const toggleLoading = () => setIsLoading((prevState) => !prevState);
 
@@ -32,7 +33,13 @@ const Contact = () => {
         toggleLoading();
       } catch (e) {
         // console.log(e)
+        setHasError(true);
         toggleLoading();
+      } finally {
+        if (!hasError) {
+          validation.resetForm();
+          setHasError((prevState) => !prevState);
+        }
       }
     },
   });
