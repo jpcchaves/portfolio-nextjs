@@ -9,10 +9,11 @@ import { contactValidation } from "../validations/contactValidation";
 import React, { FormEvent, useState } from "react";
 import { useFormik } from "formik";
 import { sendContactForm } from "../lib/api";
+import { ToastContainer } from "react-toastify";
+import { notifyError, notifySuccess } from "../hooks/notify";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
 
   const toggleLoading = () => setIsLoading((prevState) => !prevState);
 
@@ -29,23 +30,25 @@ const Contact = () => {
     onSubmit: async (values) => {
       try {
         toggleLoading();
-        await sendContactForm(values);
+        const res = await sendContactForm(values);
+
+        if (res.ok) {
+          validation.resetForm();
+          notifySuccess("Email enviado com sucesso!");
+        } else {
+          notifyError("Ocorreu um erro ao enviar o email!");
+        }
         toggleLoading();
       } catch (e) {
         // console.log(e)
-        setHasError(true);
         toggleLoading();
-      } finally {
-        if (!hasError) {
-          validation.resetForm();
-          setHasError((prevState) => !prevState);
-        }
       }
     },
   });
 
   return (
     <div className="w-full lg:h-screen" id="contact">
+      <ToastContainer />
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
         <p className="text-xl tracking-widest uppercase text-[#5651e5]">
           Contact
