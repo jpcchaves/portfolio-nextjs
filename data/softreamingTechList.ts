@@ -1,19 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { ITech } from "../types/ITech";
 
-export const taskManagerTechsList: ITech[] = [
-  {
-    id: faker.datatype.uuid(),
-    name: "Java",
-  },
-  {
-    id: faker.datatype.uuid(),
-    name: "Spring Boot",
-  },
-  {
-    id: faker.datatype.uuid(),
-    name: "MySQL",
-  },
+export const softreamingTechList: ITech[] = [
   {
     id: faker.datatype.uuid(),
     name: "TypeScript",
@@ -24,6 +12,22 @@ export const taskManagerTechsList: ITech[] = [
   },
   {
     id: faker.datatype.uuid(),
-    name: "ChakraUI",
+    name: "Styled Components",
+  },
+  {
+    id: faker.datatype.uuid(),
+    name: "NodeJS",
+  },
+  {
+    id: faker.datatype.uuid(),
+    name: "ExpressJS",
+  },
+  {
+    id: faker.datatype.uuid(),
+    name: "TypeORM",
+  },
+  {
+    id: faker.datatype.uuid(),
+    name: "PostgreSQL",
   },
 ];

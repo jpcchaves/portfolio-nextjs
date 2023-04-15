@@ -33,13 +33,25 @@ const taskmanager = () => {
             O projeto trata-se de um gerenciador de tarefas onde o usuário pode
             cadastrar, excluir e editar tarefas.
           </p>
-          <a href="https://taskmanagerv2.netlify.app/" target="_blank">
+          <a
+            href="https://taskmanagerv2.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <button className="px-8 py-2 mt-4 mr-4">Demo</button>
           </a>
-          <a href="https://github.com/jpcchaves/taskmanagerv2" target="_blank">
+          <a
+            href="https://github.com/jpcchaves/taskmanagerv2"
+            target="_blank"
+            rel="noreferrer"
+          >
             <button className="px-8 py-2 mt-4 mr-4">Front-end Code</button>
           </a>
-          <a href="https://github.com/jpcchaves/task-manager" target="_blank">
+          <a
+            href="https://github.com/jpcchaves/task-manager"
+            target="_blank"
+            rel="noreferrer"
+          >
             <button className="px-8 py-2 mt-4">Backend-end Code</button>
           </a>
         </div>

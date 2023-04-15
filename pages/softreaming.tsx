@@ -5,6 +5,7 @@ import SoftreamingImg from "../public/assets/projects/softreaming.png";
 
 import { RiRadioButtonFill } from "react-icons/ri";
 import Link from "next/link";
+import { softreamingTechList } from "../data/softreamingTechList";
 
 const softreaming = () => {
   return (
@@ -37,41 +38,31 @@ const softreaming = () => {
             de autenticação, portanto, você pode cadastrar e realizar o login na
             aplicação para assistir os filmes.
           </p>
-          <button className="px-8 py-2 mt-4 mr-8">Demo</button>
-          <button className="px-8 py-2 mt-4">Code</button>
+          <a
+            href="https://softreaming.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button className="px-8 py-2 mt-4 mr-8">Demo</button>
+          </a>
+          <a
+            href="https://github.com/jpcchaves/softreaming"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button className="px-8 py-2 mt-4">Code</button>
+          </a>
         </div>
         <div className="col-span-4 md:col-span-1 shadow-xl shadow-gray-400 rounded-xl p-4">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Tecnologias</p>
             <div className="grid grid-cols-3 md:grid-cols-1">
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                ReactJS
-              </p>
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                Styled-Components
-              </p>
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                TypeScript
-              </p>
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                NodeJS
-              </p>
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                ExpressJS
-              </p>
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                TypeORM
-              </p>
-              <p className="text-gray-600 py-2 flex items-center">
-                <RiRadioButtonFill className="pr-1" />
-                PostgreSQL
-              </p>
+              {(softreamingTechList || []).map(({ id, name }) => (
+                <p key={id} className="text-gray-600 py-2 flex items-center">
+                  <RiRadioButtonFill className="pr-1" />
+                  {name}
+                </p>
+              ))}
             </div>
           </div>
         </div>
