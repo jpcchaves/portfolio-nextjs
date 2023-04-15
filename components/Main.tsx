@@ -17,11 +17,9 @@ const Main = () => {
           </h1>
           <h1 className="py-2 text-gray-700">Sou Desenvolvedor de Software</h1>
           <p className="py-4 text-gray-600 max-w-[70%] m-auto">
-            Com dedicação total ao Web Development, estou me especializando na
-            construção de sites otimizados e bem estruturados. Atualmente focado
-            no desenvolvimento de aplicações web utilizando TypeScript, ReactJS
-            e NextJS no <strong>Front-end</strong> e utilizando Java e Spring
-            Boot no <strong>Back-end</strong>
+            Com dedicação total ao desenvolvimento de softwares, desenvolvo
+            projetos utilizando as tecnologias Java, Spring Boot, ReactJS e
+            TypeScript.
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
             <a
