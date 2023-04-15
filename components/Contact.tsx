@@ -2,43 +2,40 @@
 import Link from "next/link";
 
 import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 
 import { contactValidation } from "../validations/contactValidation";
-
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, FieldValues } from "react-hook-form";
-
+import React, { FormEvent, useState } from "react";
+import { useFormik } from "formik";
 import { sendContactForm } from "../lib/api";
-import { useState } from "react";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const formOptions = { resolver: yupResolver(contactValidation) };
+  const toggleLoading = () => setIsLoading((prevState) => !prevState);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm(formOptions);
-
-  const onSubmit = async (data: FieldValues) => {
-    try {
-      setIsLoading(true);
-
-      await sendContactForm(data);
-
-      reset();
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
+  const validation = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      name: "",
+      phone: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+    validationSchema: contactValidation,
+    onSubmit: async (values) => {
+      try {
+        toggleLoading();
+        await sendContactForm(values);
+        toggleLoading();
+      } catch (e) {
+        // console.log(e)
+        toggleLoading();
+      }
+    },
+  });
 
   return (
     <div className="w-full lg:h-screen" id="contact">
@@ -99,129 +96,121 @@ const Contact = () => {
           {/* right */}
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form
+                onSubmit={(e: FormEvent<HTMLFormElement>) => {
+                  e.preventDefault();
+                  validation.handleSubmit();
+                  return false;
+                }}
+              >
                 <div className="grid md:grid-cols-2 gap-4 w-full py-2">
                   <div className="flex flex-col">
                     <label className="uppercase text-sm py-2">Nome</label>
-                    {errors.name ? (
-                      <input
-                        className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
-                        type="text"
-                        {...register("name")}
-                      />
-                    ) : (
-                      <input
-                        className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
-                        type="text"
-                        {...register("name")}
-                      />
-                    )}
-                    {errors.name && (
+                    <input
+                      name="name"
+                      onChange={validation.handleChange}
+                      value={validation.values.name}
+                      className={`border-2 rounded-lg p-3 flex ${
+                        validation.errors.name && validation.touched.name
+                          ? `border-red-500`
+                          : `border-gray-300`
+                      }  focus:outline-[#5651e5]`}
+                      type="text"
+                    />
+                    {validation.touched.name && validation.errors.name ? (
                       <p className="text-red-500 ml-1">
-                        <>{errors.name?.message}</>
+                        <>{validation.errors.name}</>
                       </p>
-                    )}
+                    ) : null}
                   </div>
                   <div className="flex flex-col">
                     <label className="uppercase text-sm py-2">Telefone</label>
-                    {errors.phone ? (
-                      <input
-                        className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
-                        type="number"
-                        {...register("phone")}
-                      />
-                    ) : (
-                      <input
-                        className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
-                        type="number"
-                        {...register("phone")}
-                      />
-                    )}
-                    {errors.phone && (
+                    <input
+                      name="phone"
+                      onChange={validation.handleChange}
+                      value={validation.values.phone}
+                      className={`border-2 rounded-lg p-3 flex ${
+                        validation.errors.phone && validation.touched.phone
+                          ? `border-red-500`
+                          : `border-gray-300`
+                      }  focus:outline-[#5651e5]`}
+                      type="text"
+                    />
+                    {validation.touched.phone && validation.errors.phone ? (
                       <p className="text-red-500 ml-1">
-                        <>{errors.phone?.message}</>
+                        <>{validation.errors.phone}</>
                       </p>
-                    )}
+                    ) : null}
                   </div>
                 </div>
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Email</label>
-                  {errors.email ? (
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
-                      type="email"
-                      {...register("email")}
-                    />
-                  ) : (
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
-                      type="email"
-                      {...register("email")}
-                    />
-                  )}
-                  {errors.email && (
+
+                  <input
+                    className={`border-2 rounded-lg p-3 flex ${
+                      validation.errors.email && validation.touched.email
+                        ? `border-red-500`
+                        : `border-gray-300`
+                    }  focus:outline-[#5651e5]`}
+                    type="text"
+                    name="email"
+                    onChange={validation.handleChange}
+                    value={validation.values.email}
+                  />
+
+                  {validation.touched.email && validation.errors.email ? (
                     <p className="text-red-500 ml-1">
-                      <>{errors.email?.message}</>
+                      <>{validation.errors.email}</>
                     </p>
-                  )}
+                  ) : null}
                 </div>
+
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Assunto</label>
-                  {errors.subject ? (
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-red-500 focus:outline-[#5651e5]"
-                      type="text"
-                      {...register("subject")}
-                    />
-                  ) : (
-                    <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300 focus:outline-[#5651e5]"
-                      type="text"
-                      {...register("subject")}
-                    />
-                  )}
-                  {errors.subject && (
+                  <input
+                    className={`border-2 rounded-lg p-3 flex ${
+                      validation.errors.subject && validation.touched.subject
+                        ? `border-red-500`
+                        : `border-gray-300`
+                    }  focus:outline-[#5651e5]`}
+                    type="text"
+                    name="subject"
+                    onChange={validation.handleChange}
+                    value={validation.values.subject}
+                  />
+
+                  {validation.touched.subject && validation.errors.subject ? (
                     <p className="text-red-500 ml-1">
-                      <>{errors.subject?.message}</>
+                      <>{validation.errors.subject}</>
                     </p>
-                  )}
+                  ) : null}
                 </div>
+
                 <div className="flex flex-col py-2">
                   <label className="uppercase text-sm py-2">Mensagem</label>
-                  {errors.message ? (
-                    <textarea
-                      className="border-2 rounded-lg p-3 border-red-500 focus:outline-[#5651e5]"
-                      rows={10}
-                      {...register("message")}
-                    />
-                  ) : (
-                    <textarea
-                      className="border-2 rounded-lg p-3 border-gray-300 focus:outline-[#5651e5]"
-                      rows={10}
-                      {...register("message")}
-                    />
-                  )}
-                  {errors.message && (
+                  <textarea
+                    className={`border-2 rounded-lg p-3 flex ${
+                      validation.errors.message && validation.touched.message
+                        ? `border-red-500`
+                        : `border-gray-300`
+                    }  focus:outline-[#5651e5]`}
+                    rows={10}
+                    name="message"
+                    onChange={validation.handleChange}
+                    value={validation.values.message}
+                  />
+
+                  {validation.touched.message && validation.errors.message ? (
                     <p className="text-red-500 ml-1">
-                      <>{errors.message?.message}</>
+                      <>{validation.errors.message}</>
                     </p>
-                  )}
+                  ) : null}
                 </div>
-                {isLoading && (
-                  <input
-                    type="submit"
-                    value="Enviando..."
-                    disabled
-                    className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
-                  />
-                )}
-                {!isLoading && (
-                  <input
-                    type="submit"
-                    value="Enviar Mensagem"
-                    className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
-                  />
-                )}
+                <input
+                  type="submit"
+                  value={isLoading ? "Enviando..." : "Enviar Mensagem"}
+                  className="w-full p-4 text-gray-100 mt-4 hover:cursor-pointer hover:opacity-80 ease-in duration-200"
+                />
               </form>
             </div>
           </div>

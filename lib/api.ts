@@ -1,8 +1,9 @@
-export const sendContactForm = async (data: any) => await fetch('/api/contact', {
+export const sendContactForm = async (values: any) =>
+  await fetch("/api/contact", {
     method: "POST",
-    body: JSON.stringify(data),
+    body: JSON.stringify(values),
     headers: {
-        "Content-Type": "application/json",
-         Accept: "application/json"
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
-})
+  });
