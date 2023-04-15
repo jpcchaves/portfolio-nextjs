@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>João Paulo | Web Developer</title>
+        <title>João Paulo | Software Developer</title>
         <meta name="description" content="Criado utilizando NextJS" />
         <link rel="icon" href="/favicon.io" />
       </Head>
