@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import React from "react";
 
 const About = () => {
@@ -12,19 +11,29 @@ const About = () => {
           </p>
           <h2 className="py-4">Quem sou eu?</h2>
           <p className="py-2 text-gray-600">
-            Com 2 anos de experiência no desenvolvimento de softwares, dedico
-            meus esforços atuando em projetos Java, Spring Boot, React e
-            TypeScript. Iniciei meus estudos focando nas tecnologias HTML e CSS
-            para ter o primeiro contato com o desenvolvimento de websites e, a
-            partir daí, me apaixonei por programação e busquei cada vez mais
-            melhorar minhas skills e aprender novas tecnologias.
+            Olá! Sou João Paulo, desenvolvedor de software apaixonado por
+            transformar ideias em realidade. Com uma sólida experiência no
+            desenvolvimento de aplicações, concentro meus esforços em aprimorar
+            a experiência do usuário por meio da combinação das tecnologias
+            ReactJS e TypeScript no Front-end e Java e Spring Boot no Back-end.
           </p>
           <p className="py-2 text-gray-600">
-            Então, logo iniciei meus estudos em lógica de programação e a
-            aprender linguagens como o JavaScript, partindo depois para o
-            TypeScript e Java. Aliado a isso, foquei no aprendizado do ReactJS e
-            Spring Boot, que são frameworks poderosos que ajudam no processo de
-            desenvolvimento de softwares.
+            No Back-end, minha expertise se concentra no ecossistema Java e
+            Spring Boot. Trabalho com essas tecnologias para desenvolver
+            soluções eficientes e escaláveis que suportem as demandas dos
+            projetos. Através da aplicação de boas práticas de programação,
+            construo APIs seguras e eficientes, garantindo a integridade e
+            confiabilidade dos sistemas.
+          </p>
+          <p className="py-2 text-gray-600">
+            Como desenvolvedor Front-end, minha missão é criar interfaces
+            intuitivas e responsivas que proporcionem aos usuários uma
+            experiência agradável e envolvente. Através do ReactJS, aproveito a
+            modularidade e a reutilização de componentes para criar aplicações
+            dinâmicas e escaláveis. Além disso, minha experiência com TypeScript
+            permite um desenvolvimento mais robusto, garantindo a detecção de
+            erros durante a fase de compilação e a melhoria da manutenibilidade
+            do código.
           </p>
           <a
             href="#projects"
