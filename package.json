@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^2.9.10",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
+    "flag-icons": "^6.11.1",
     "formik": "^2.2.9",
     "i18next": "^23.5.1",
     "next": "13.5.3",
