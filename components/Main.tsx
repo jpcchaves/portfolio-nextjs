@@ -3,13 +3,17 @@ import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Main = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="w-full h-screen text-center" id="home">
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
         <div>
           <p className="uppercase text-sm tracking-widest text-gray-600">
+            {t("welcome")}
             Vamos desenvolver algo juntos?
           </p>
           <h1 className="py-4 text-gray-700">
