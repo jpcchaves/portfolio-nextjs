@@ -10,6 +10,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 
 import navLogo from "../public/assets/navLogo.png";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -87,6 +88,7 @@ const Navbar = () => {
                 Contact
               </li>
             </Link>
+            <LocaleSwitcher />
           </ul>
           <div className="md:hidden" onClick={handleNav}>
             <AiOutlineMenu size={25} />
