@@ -1,3 +1,8 @@
 {
-        "welcome": "Bem vindo!"
+  "home": "Home",
+  "about": "Sobre mim",
+  "skills": "Habilidades",
+  "projects": "Projetos",
+  "contact": "Contato",
+  "welcome": "Bem vindo!"
 }
