@@ -11,6 +11,8 @@ import { useRouter } from "next/router";
 
 import navLogo from "../public/assets/navLogo.png";
 import LocaleSwitcher from "./LocaleSwitcher";
+import { useTranslation } from "react-i18next";
+import { navbarLinks } from "../data/navLinks";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -36,6 +38,10 @@ const Navbar = () => {
 
   const handleNav = () => {
     setNav((prev) => !prev);
+  };
+
+  const hideNav = () => {
+    setNav(false);
   };
 
   useEffect(() => {
@@ -69,26 +75,15 @@ const Navbar = () => {
         </Link>
         <div>
           <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
-            <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
-            </Link>
-            <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:border-b">About</li>
-            </Link>
-            <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">Skills</li>
-            </Link>
-            <Link href="/#projects">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Projects
+            {MakeNavLinks({
+              handleClick: null!,
+              classes: "ml-10 text-sm uppercase hover:border-b",
+            })}
+            <Link href={"#"}>
+              <li className="ml-10 text-sm uppercase hover:border-b ">
+                <LocaleSwitcher />
               </li>
             </Link>
-            <Link href="/#contact">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Contact
-              </li>
-            </Link>
-            <LocaleSwitcher />
           </ul>
           <div className="md:hidden" onClick={handleNav}>
             <AiOutlineMenu size={25} />
@@ -127,31 +122,7 @@ const Navbar = () => {
           </div>
           <div className="py-4 flex flex-col sm:py-2">
             <ul className="uppercase">
-              <Link href="/">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Home
-                </li>
-              </Link>
-              <Link href="/#about">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  About
-                </li>
-              </Link>
-              <Link href="/#skills">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Skills
-                </li>
-              </Link>
-              <Link href="/#projects">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Projects
-                </li>
-              </Link>
-              <Link href="/#contact">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Contact
-                </li>
-              </Link>
+              {MakeNavLinks({ handleClick: hideNav, classes: "py-4 text-sm" })}
             </ul>
             <div className="pt-20 xs:pt-10 xxs:pt-5">
               <p className="uppercase tracking-widest text-[#5651e5]">
@@ -196,3 +167,24 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const MakeNavLinks = ({
+  handleClick,
+  classes,
+}: {
+  handleClick?: () => void;
+  classes: string;
+}) => {
+  const { t } = useTranslation();
+
+  return (navbarLinks || []).map(({ translateKey, path }, idx) => (
+    <Link key={idx} href={path}>
+      <li
+        className={classes}
+        onClick={handleClick ? () => handleClick() : null!}
+      >
+        {t(translateKey)}
+      </li>
+    </Link>
+  ));
+};
