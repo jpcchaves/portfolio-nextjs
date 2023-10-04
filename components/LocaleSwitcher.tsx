@@ -58,10 +58,7 @@ const LocaleSwitcher = () => {
           aria-orientation="vertical"
           aria-labelledby={LANGUAGE_SELECTOR_ID}
         >
-          <div
-            className="grid grid-cols-1 bg-transparent shadow rounded"
-            role="none"
-          >
+          <div className="grid  bg-transparent shadow rounded" role="none">
             {languages.map((language, index) => {
               return (
                 <button
@@ -71,7 +68,7 @@ const LocaleSwitcher = () => {
                   role="menuitem"
                 >
                   {language.code === "pt" && (
-                    <span className={`fi fi-br fis `} />
+                    <span className={`fi fi-br fis  `} />
                   )}
                   {language.code === "en" && (
                     <span className={`fi fi-us fis`} />
