@@ -37,17 +37,17 @@ const LocaleSwitcher = () => {
   );
 
   return (
-    <div className={"position-relative"}>
+    <>
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="inline-flex d-block items-center ml-10 justify-center rounded-md shadow-none text-sm font-medium text-gray-700"
+        className=" shadow-none"
         id={LANGUAGE_SELECTOR_ID}
       >
         <span
           className={`fi fi-${
             selectedLanguage?.code === "pt" ? "br" : "us"
-          } fis }`}
+          } fis] }`}
         />
       </button>
 
@@ -59,7 +59,7 @@ const LocaleSwitcher = () => {
           aria-labelledby={LANGUAGE_SELECTOR_ID}
         >
           <div
-            className="py-1 grid grid-cols-1 bg-transparent shadow rounded"
+            className="grid grid-cols-1 bg-transparent shadow rounded"
             role="none"
           >
             {languages.map((language, index) => {
@@ -82,7 +82,7 @@ const LocaleSwitcher = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
