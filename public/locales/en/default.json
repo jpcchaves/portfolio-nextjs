@@ -5,5 +5,8 @@
   "skills": "Skills",
   "projects": "Projects",
   "contact": "Contact",
-  "welcome": "Welcome!"
+  "main.text-1": "Let's build something together?",
+  "main.text-2": "Hello, my name is",
+  "main.text-3": "Software Engineer",
+  "main.briefing": "I am a passionate software engineer, with great expertise in Java and Spring Boot, dedicated to developing high-quality software. My passion for technology drives me to seek innovative and efficient solutions."
 }

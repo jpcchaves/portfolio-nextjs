@@ -5,5 +5,8 @@
   "skills": "Habilidades",
   "projects": "Projetos",
   "contact": "Contato",
-  "welcome": "Bem vindo!"
+  "main.text-1": "Vamos desenvolver algo juntos?",
+  "main.text-2": "Olá, me chamo",
+  "main.text-3": "Engenheiro de Software",
+  "main.briefing": "Eu sou um engenheiro de software apaixonado, com grande expertise em Java e Spring Boot, dedicado ao desenvolvimento de software de alta qualidade. Minha paixão pela tecnologia me impulsiona a buscar soluções inovadoras e eficientes."
 }
