@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const LocaleSwitcher = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const languages = [
@@ -64,14 +64,14 @@ const LocaleSwitcher = () => {
                 <button
                   key={language.code}
                   onClick={() => changeLanguage(i18n, language.code)}
-                  className={`block px-4 py-2 text-sm text-start items-center inline-flex bg-gradient-to-r from-transparent to-transparent shadow-none`}
+                  className={`block px-4 py-2 items-center inline-flex bg-gradient-to-r from-transparent to-transparent shadow-none`}
                   role="menuitem"
                 >
                   {language.code === "pt" && (
-                    <span className={`fi fi-br fis  `} />
+                    <span className={`fi fi-br fib`} />
                   )}
                   {language.code === "en" && (
-                    <span className={`fi fi-us fis`} />
+                    <span className={`fi fi-us fib`} />
                   )}
                 </button>
               );
