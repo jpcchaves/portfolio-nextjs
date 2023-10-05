@@ -13,17 +13,15 @@ const Main = () => {
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
         <div>
           <p className="uppercase text-sm tracking-widest text-gray-600">
-            {t("welcome")}
-            Vamos desenvolver algo juntos?
+            {t("main.text-1")}
           </p>
           <h1 className="py-4 text-gray-700">
-            Olá, me chamo <span className="text-[#5651e5]">João</span>
+            {t("main.text-2")}
+            <span className="text-[#5651e5]"> João</span>
           </h1>
-          <h1 className="py-2 text-gray-700">Sou Desenvolvedor de Software</h1>
+          <h1 className="py-2 text-gray-700">{t("main.text-3")}</h1>
           <p className="py-4 text-gray-600 max-w-[70%] m-auto">
-            Com dedicação total ao desenvolvimento de softwares, desenvolvo
-            projetos utilizando as tecnologias Java, Spring Boot, ReactJS e
-            TypeScript.
+            {t("main.briefing")}
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
             <a
